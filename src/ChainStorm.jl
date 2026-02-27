@@ -4,6 +4,7 @@ using Flowfusion, ForwardBackward, Flux, RandomFeatureMaps, Onion, InvariantPoin
 
 include("flow.jl")
 include("model.jl")
+include("treegen.jl")
 
 function load_model(; checkpoint = "ChainStormV1.jld2")
     file = hf_hub_download("MurrellLab/ChainStorm", checkpoint)
@@ -41,6 +42,6 @@ function dummy_batch(chain_lengths)
     return (;chainids, resinds, padmask, aas, locs)
 end
 
-export training_sample, P, ChainStormV1, losses, flow_quickgen, export_pdb, gen2prot, dummy_batch, first_trajectory, load_model
+export training_sample, P, ChainStormV1, losses, flow_quickgen, flow_treegen, export_pdb, gen2prot, dummy_batch, first_trajectory, load_model
 
 end
